@@ -11,9 +11,21 @@ class App extends Component {
     return (
       <div className="App">
           <Header />
+          {this.props.questionIds.map((id) => (
+            <div key={id}>{id}</div>
+          ))}
       </div>
     );
   }
 }
 
-export default connect()(App);
+function mapStateToProps(state){
+  const { questions } = state
+  const questionIds = Object.keys(questions)
+  return({
+    questionIds: questionIds
+    .sort((a,b) => questions[b].timestamp - questions[a].timestamp)
+  })
+}
+
+export default connect(mapStateToProps)(App);
