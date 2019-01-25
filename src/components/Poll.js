@@ -3,16 +3,39 @@ import { connect } from 'react-redux'
 
 class Poll extends Component{
 	render(){
-		return(<div>{this.props.question.poll}</div>)
+		const { question, avatar } = this.props
+		return(<div className='tweet'>
+        <img
+          src={avatar}
+          alt={`Avatar of ${question.author}`}
+          className='avatar'
+        />
+        <div className='tweet-info'>
+          <div>
+            <span>{question.author}</span>
+            <div>{question.timestamp}</div>
+            <p>{question.poll}</p>
+          </div>
+          <div className='tweet-icons'>
+            
+            <button className='heart-button' onClick={this.handleLike}>
+              
+            </button>
+          </div>
+        </div>
+      </div>)
 	}
 }
 
 function mapStateToProps(state, ownProps){
-	const { questions } = state
+	const { questions, users } = state
 	const { id } = ownProps
 	const question = questions[id]
+	const asker = question.author
+	const avatar = users[asker].avatarURL
 	return {
-		question
+		question,
+		avatar
 	}
 }
 export default connect(mapStateToProps)(Poll)
