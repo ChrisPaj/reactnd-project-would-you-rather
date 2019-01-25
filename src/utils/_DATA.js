@@ -119,7 +119,9 @@ let users = {
 		text: 'write Swift'
 	  }
 	},
-  }
+	}
+	
+let authedUser = {id: "tylermcginnis"}
   
   function generateUID () {
 	return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
@@ -135,7 +137,13 @@ let users = {
 	return new Promise((res, rej) => {
 	  setTimeout(() => res({...questions}), 1000)
 	})
-  }
+	}
+	
+	export function _getAuthedUser () {
+		return new Promise((res, rej) => {
+			setTimeout(() => res({...authedUser}), 1000)
+		})
+		}
   
   function formatQuestion ({ optionOneText, optionTwoText, author }) {
 	return {
