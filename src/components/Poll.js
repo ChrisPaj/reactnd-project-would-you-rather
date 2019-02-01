@@ -4,7 +4,8 @@ import { connect } from 'react-redux'
 class Poll extends Component{
 	render(){
 		const { question, avatar } = this.props
-		return(<div className='tweet'>
+		return(
+    <div className='tweet'>
         <img
           src={avatar}
           alt={`Avatar of ${question.author}`}
@@ -18,8 +19,8 @@ class Poll extends Component{
           </div>
           <div className='tweet-icons'>
             
-            <button className='heart-button' onClick={this.handleLike}>
-              
+            <button onClick={this.handleLike}>
+              click me
             </button>
           </div>
         </div>
