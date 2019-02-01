@@ -2,18 +2,16 @@ import {
   _getUsers,
   _getQuestions,
 	_getAuthedUser,
-	_getHasAnswered,
   _saveQuestion,
   _saveQuestionAnswer
 } from "./_DATA.js";
 
 export function getInitialData() {
-  return Promise.all([_getUsers(), _getQuestions(), _getAuthedUser(), _getHasAnswered()]).then(
-    ([users, questions, authedUser, hasAnswered]) => ({
+  return Promise.all([_getUsers(), _getQuestions(), _getAuthedUser()]).then(
+    ([users, questions, authedUser]) => ({
       users,
       questions,
 			authedUser,
-			hasAnswered
     })
   );
 }

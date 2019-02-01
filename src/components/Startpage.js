@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Poll from "./Poll";
-import { toggleHasAnswered } from '../actions/hasAnswered'
+import { toggleShowPollsAnswered } from '../actions/authedUser'
 
 class Startpage extends Component {
   render() {
@@ -27,16 +27,16 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     toggleOnClick: () => {
       console.log("button pressed");
-      dispatch(toggleHasAnswered());
+      dispatch(toggleShowPollsAnswered());
     }
   }
 }
     
 
 function mapStateToProps(state) {
-  const { questions, authedUser, hasAnswered } = state;
+  const { questions, authedUser } = state;
   var filtered = Object.filter(questions, score => {
-    return hasAnswered.hasAnswered
+    return authedUser.showPollsAnswered
       ? score.optionOne.votes.includes(authedUser.id) ||
           score.optionTwo.votes.includes(authedUser.id)
       : !(

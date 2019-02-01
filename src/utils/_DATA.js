@@ -120,8 +120,10 @@ let questions = {
     }
   }
 };
-let authedUser = { id: "sarahedo" };
-let hasAnswered = { hasAnswered: true };
+let authedUser = { 
+	id: "sarahedo", 
+	showPollsAnswered: true,	
+};
 
 function generateUID() {
   return (
@@ -149,12 +151,6 @@ export function _getQuestions() {
 export function _getAuthedUser() {
   return new Promise((res, rej) => {
     setTimeout(() => res({ ...authedUser }), 1000);
-  });
-}
-
-export function _getHasAnswered() {
-  return new Promise((res, rej) => {
-    setTimeout(() => res({ ...hasAnswered }), 1000);
   });
 }
 
