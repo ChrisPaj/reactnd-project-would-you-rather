@@ -5,20 +5,17 @@ import { toggleShowPollsAnswered } from "../actions/authedUser";
 
 class Startpage extends Component {
   render() {
-    const { authedUser, questionIds, toggleOnClick } = this.props
+    const { authedUser, questionIds, toggleOnClick } = this.props;
     return (
       <div>
-        {authedUser.id !== "" ? (
-          <div>
-          <button className="button" onClick={toggleOnClick}>
-            {authedUser.showPollsAnswered ? "Toggle to Unanswered Polls" : "Toggle to Answered Polls"}
-          </button>
-          {questionIds.map(id => (
+        <button className="button" onClick={toggleOnClick}>
+          {authedUser.showPollsAnswered
+            ? "Toggle to Unanswered Polls"
+            : "Toggle to Answered Polls"}
+        </button>
+        {questionIds.map(id => (
           <Poll key={id} id={id} />
         ))}
-        </div>
-        ) : null}
-        
       </div>
     );
   }

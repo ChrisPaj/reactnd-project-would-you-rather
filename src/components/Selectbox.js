@@ -8,21 +8,15 @@ class Selectbox extends Component {
     this.state = { id: "" };
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
     this.setState({ id: event.target.value });
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
-    this.setState({ id: event.target.value });
-  }
-
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={(e) => e.preventDefault()}>
         <label>
           Your Username:
           <select
@@ -43,7 +37,9 @@ class Selectbox extends Component {
           <input
             type="submit"
             value="Submit"
-            onClick={() => this.props.toggleOnClick(this.state.id)}
+            onClick={() => {
+							this.props.toggleOnClick(this.state.id)
+							}}
           />
         )}
       </form>

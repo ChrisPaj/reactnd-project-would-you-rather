@@ -27,10 +27,17 @@ class App extends Component {
           <Nav />
           <Selectbox />
         </StyledHeader>
-        <Startpage />
+        {this.props.authedUser.id ? <Startpage /> : null}
       </div>
     );
   }
 }
 
-export default connect()(App);
+function mapPropsToState(state) {
+  const { authedUser } = state;
+  return {
+    authedUser
+  };
+}
+
+export default connect(mapPropsToState)(App);
