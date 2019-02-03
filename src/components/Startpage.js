@@ -1,18 +1,24 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Poll from "./Poll";
-import { toggleShowPollsAnswered } from '../actions/authedUser'
+import { toggleShowPollsAnswered } from "../actions/authedUser";
 
 class Startpage extends Component {
   render() {
+    const { authedUser, questionIds, toggleOnClick } = this.props
     return (
       <div>
-        <button className="tweet" onClick={this.props.toggleOnClick}>
-          toggle
-        </button>
-        {this.props.questionIds.map(id => (
+        {authedUser.id !== "" ? (
+          <div>
+          <button className="button" onClick={toggleOnClick}>
+            {authedUser.showPollsAnswered ? "Toggle to Unanswered Polls" : "Toggle to Answered Polls"}
+          </button>
+          {questionIds.map(id => (
           <Poll key={id} id={id} />
         ))}
+        </div>
+        ) : null}
+        
       </div>
     );
   }
@@ -29,9 +35,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       console.log("button pressed");
       dispatch(toggleShowPollsAnswered());
     }
-  }
-}
-    
+  };
+};
 
 function mapStateToProps(state) {
   const { questions, authedUser } = state;
@@ -48,8 +53,12 @@ function mapStateToProps(state) {
   return {
     questionIds: questionIds.sort(
       (a, b) => questions[b].timestamp - questions[a].timestamp
-    )
+    ),
+    authedUser
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Startpage);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Startpage);

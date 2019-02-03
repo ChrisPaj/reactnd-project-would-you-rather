@@ -121,8 +121,8 @@ let questions = {
   }
 };
 let authedUser = { 
-	id: "sarahedo", 
-	showPollsAnswered: true,	
+	id: "", 
+	showPollsAnswered: false,	
 };
 
 function generateUID() {
