@@ -22,7 +22,7 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="test">
+      <div className="app">
         <StyledHeader>
           <Nav />
           <Selectbox />

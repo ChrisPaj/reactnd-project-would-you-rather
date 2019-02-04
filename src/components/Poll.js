@@ -1,24 +1,27 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { formatDate } from '../utils/helpers'
+import { formatDate } from "../utils/helpers";
 
 class Poll extends Component {
   render() {
-    const { question, avatar } = this.props;
+    const { question, avatar, children } = this.props;
     return (
-      <div className="poll">
-        <img
-          src={avatar}
-          alt={`Avatar of ${question.author}`}
-          className="avatar"
-        />
-        <div className="tweet-info">
-          <div>
-            <span>{question.author}</span>
-            <div>{formatDate(question.timestamp)}</div>
-            <p>{question.poll}</p>
+      <div className="outerpoll"> 
+        <div className="innerpoll">
+          <img
+            src={avatar}
+            alt={`Avatar of ${question.author}`}
+            className="avatar"
+          />
+          <div className="poll-info">
+            <div>
+              <span>{question.author}</span>
+              <div>{formatDate(question.timestamp)}</div>
+              <p className="textpoll">{question.poll}</p>
+            </div>
           </div>
         </div>
+        <div>{children}</div>
       </div>
     );
   }
