@@ -25,12 +25,12 @@ class Selectbox extends Component {
             onChange={this.handleChange}
           >
             <option hidden disabeled="true" value="default">
-              ---choose out of list---
+              ---choose out of list and press Submit---
             </option>
             <option value="sarahedo">Sarah Edo</option>
             <option value="tylermcginnis">Tyler McGinnis</option>
             <option value="johndoe">John Doe</option>
-            <option value="christianfreeman">Christian Freeman</option>
+            <option value="chrispa">Chris Pa</option>
           </select>
         </label>
         {this.state.id === "" ? null : (

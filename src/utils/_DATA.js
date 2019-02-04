@@ -24,14 +24,26 @@ let users = {
   johndoe: {
     id: "johndoe",
     name: "John Doe",
-    avatarURL: "images/sarah.jpg",
+    avatarURL: "https://tylermcginnis.com/would-you-rather/dan.jpg",
     answers: {
       xj352vofupe1dqz9emx13r: "optionOne",
       vthrdm985a262al8qx3do: "optionTwo",
       "6ni6ok3ym7mf1p33lnez": "optionOne"
     },
     questions: ["6ni6ok3ym7mf1p33lnez", "xj352vofupe1dqz9emx13r"]
-  }
+  },
+  chrispa: {
+    id: "chrispa",
+    name: "Chris Pa",
+    avatarURL: "https://tylermcginnis.com/would-you-rather/sarah.jpg",
+    answers: {
+      "8xf0y6ziyjabvozdd253nd": "optionTwo",
+      "6ni6ok3ym7mf1p33lnez": "optionOne",
+      am8ehyc8byjqgar0jgpub9: "optionTwo",
+      loxhs1bqm25b708cmbf3g: "optionOne"
+    },
+    questions: []
+  },
 };
 
 let questions = {
@@ -45,7 +57,7 @@ let questions = {
       text: "have horrible short term memory"
     },
     optionTwo: {
-      votes: [],
+      votes: ["chrispa"],
       text: "have horrible long term memory"
     }
   },
@@ -54,7 +66,7 @@ let questions = {
     author: "johndoe",
     timestamp: 1468479767190,
     optionOne: {
-      votes: [],
+      votes: ["chrispa"],
       text: "become a superhero"
     },
     poll: "What you rather become?",
@@ -73,7 +85,7 @@ let questions = {
       text: "be telekinetic"
     },
     optionTwo: {
-      votes: ["sarahedo"],
+      votes: ["sarahedo","chrispa"],
       text: "be telepathic"
     }
   },
@@ -83,7 +95,7 @@ let questions = {
     timestamp: 1482579767190,
     poll: "What job wouldyou rather do?",
     optionOne: {
-      votes: [],
+      votes: ["chrispa"],
       text: "be a front-end developer"
     },
     optionTwo: {
