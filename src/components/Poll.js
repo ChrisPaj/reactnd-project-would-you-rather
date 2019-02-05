@@ -4,7 +4,7 @@ import { formatDate } from "../utils/helpers";
 
 class Poll extends Component {
   render() {
-    const { question, avatar, children } = this.props;
+    const { question, avatar, children, id } = this.props;
     return (
       <div className="outerpoll"> 
         <div className="innerpoll">
@@ -16,6 +16,7 @@ class Poll extends Component {
           <div className="poll-info">
             <div>
               <span>{question.author}</span>
+              <span>{id}</span>
               <div>{formatDate(question.timestamp)}</div>
               <p className="textpoll">{question.poll}</p>
             </div>
