@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { answerQuestion } from "../actions/questions";
-import authedUser from "../reducers/authedUser";
+import { userAnswers } from "../actions/users";
 
 class Radiobutton extends Component {
   constructor(props) {
@@ -52,6 +52,7 @@ function mapDispatchToProps(dispatch, ownProps){
     answerQuestionOnClick: ({id, authedUser, option}) => {
       console.log("button pressed. id: " + id + " authedUser: " + authedUser.id + " option: " + option);
       dispatch(answerQuestion({id, authedUser, option}));
+      dispatch(userAnswers({id, authedUser, option}));
     }
   };
 }

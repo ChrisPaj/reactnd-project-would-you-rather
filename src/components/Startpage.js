@@ -39,17 +39,13 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 };
 
 function mapStateToProps(state) {
-  const { questions, authedUser } = state;
-  var filtered = Object.filter(questions, score => {
-    return authedUser.showPollsAnswered
-      ? score.optionOne.votes.includes(authedUser.id) ||
-          score.optionTwo.votes.includes(authedUser.id)
-      : !(
-          score.optionOne.votes.includes(authedUser.id) ||
-          score.optionTwo.votes.includes(authedUser.id)
-        );
+  const { questions, authedUser, users } = state;
+  const answeredQuestions = Object.keys(users[authedUser.id].answers);
+  var filtered = Object.filter(questions, question => {
+    return !answeredQuestions.includes(question.id);
   });
   var questionIds = Object.keys(filtered);
+  console.log("questionIds: " + questionIds)
   return {
     questionIds: questionIds.sort(
       (a, b) => questions[b].timestamp - questions[a].timestamp
