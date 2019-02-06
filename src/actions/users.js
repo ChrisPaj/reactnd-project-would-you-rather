@@ -7,7 +7,7 @@ export function getUsers(users){
 		users
 	}
 }
-export function userAnswers({id, authedUser, option}){
+export function answerUser({id, authedUser, option}){
 	return {
 		type: USER_ANSWERS,
 		id,

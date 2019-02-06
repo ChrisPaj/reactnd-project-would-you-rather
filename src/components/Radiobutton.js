@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { answerQuestion } from "../actions/questions";
-import { userAnswers } from "../actions/users";
+import { answerUser } from "../actions/users";
+import { handleUserAnswer } from "../actions/shared";
 
 class Radiobutton extends Component {
   constructor(props) {
@@ -15,6 +16,13 @@ class Radiobutton extends Component {
     this.setState({ option: event.target.value });
   }
 
+  handleAnswer = (e) =>{
+    e.preventDefault()
+    const { id, authedUser, dispatch } = this.props
+    const { option } = this.state
+    dispatch(handleUserAnswer({id, authedUser, option}))
+  }
+
   render() {
     const { optionOne, optionTwo, authedUser, id } = this.props
     const { option } = this.state
@@ -23,12 +31,7 @@ class Radiobutton extends Component {
         <form onChange={this.handleChange}>
           <input type="radio" name="option" value="optionOne" className="radio"/> {optionOne} <br />
           <input type="radio" name="option" value="optionTwo" className="radio"/> {optionTwo} <br />
-          <input type="submit" value="Submit" className="btn" onClick={(e) => {
-            e.preventDefault()
-            this.props.answerQuestionOnClick({
-              id: id,
-              authedUser,
-              option})}}/>
+          <input type="submit" value="SubmitTest" className="btn" onClick={this.handleAnswer}/>
         </form>
       </div>
     );
@@ -47,14 +50,14 @@ function mapStateToProps(state, ownProps){
   }
 }
 
-function mapDispatchToProps(dispatch, ownProps){
+/* function mapDispatchToProps(dispatch){
   return {
     answerQuestionOnClick: ({id, authedUser, option}) => {
       console.log("button pressed. id: " + id + " authedUser: " + authedUser.id + " option: " + option);
       dispatch(answerQuestion({id, authedUser, option}));
-      dispatch(userAnswers({id, authedUser, option}));
+      dispatch(answerUser({id, authedUser, option}));
     }
   };
-}
+} */
 
-export default connect(mapStateToProps, mapDispatchToProps)(Radiobutton);
+export default connect(mapStateToProps)(Radiobutton);
