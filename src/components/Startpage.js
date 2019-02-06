@@ -42,7 +42,9 @@ function mapStateToProps(state) {
   const { questions, authedUser, users } = state;
   const answeredQuestions = Object.keys(users[authedUser.id].answers);
   var filtered = Object.filter(questions, question => {
-    return !answeredQuestions.includes(question.id);
+    return authedUser.showPollsAnswered
+    ? answeredQuestions.includes(question.id)
+    : !answeredQuestions.includes(question.id)
   });
   var questionIds = Object.keys(filtered);
   console.log("questionIds: " + questionIds)
