@@ -182,10 +182,10 @@ function formatQuestion({ optionOneText, optionTwoText, author }) {
   };
 }
 
-export function _saveQuestion(question) {
+export function _saveQuestion({ optionOneText, optionTwoText, author }) {
   return new Promise((res, rej) => {
-    const authedUser = question.author;
-    const formattedQuestion = formatQuestion(question);
+    const formattedQuestion = formatQuestion({ optionOneText, optionTwoText, author });
+    const authedUser = formattedQuestion.author;
 
     setTimeout(() => {
       questions = {
@@ -211,10 +211,10 @@ export function _saveQuestionAnswer({ id, authedUser, option }) {
     setTimeout(() => {
       users = {
         ...users,
-        [authedUser]: {
-          ...users[authedUser],
+        [authedUser.id]: {
+          ...users[authedUser.id],
           answers: {
-            ...users[authedUser].answers,
+            ...users[authedUser.id].answers,
             [id]: option
           }
         }

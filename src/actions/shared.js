@@ -14,19 +14,18 @@ export function handleInitialData() {
   };
 }
 
-/* export function handleUserAnswer({ id, authedUser, option }){
+export function handleUserAnswer({ id, authedUser, option }){
   return (dispatch) => {
     return saveQuestionAnswer({ id, authedUser, option })
-    .then(() => {
-      dispatch(answerQuestion({id, authedUser, option}));
-      dispatch(answerUser({id, authedUser, option}));
-    });
+    .then(() => dispatch(answerQuestion({id, authedUser, option})))
+    .then(() => dispatch(answerUser({id, authedUser, option})));
+    }
+  }
+
+/* export function handleUserAnswer(info){
+  return (dispatch) => {
+      return saveQuestionAnswer(info)
+        .then(() => dispatch(answerQuestion(info)))
+        .then(() => dispatch(answerUser(info)))
   };
 } */
-
-export function handleUserAnswer(info){
-  return (dispatch) => {
-      dispatch(answerQuestion(info));
-      dispatch(answerUser(info));
-  };
-}
