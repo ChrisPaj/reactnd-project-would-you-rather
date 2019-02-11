@@ -2,13 +2,14 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Poll from "./Poll";
 import Radiobutton from "./Radiobutton";
+import NewPoll from "./NewPoll";
 import { toggleShowPollsAnswered } from "../actions/authedUser";
 
 class Startpage extends Component {
   render() {
     const { authedUser, questionIds, toggleOnClick } = this.props;
-    return (
-      <div>
+    return ( authedUser === "hello" ?
+      (<div>
         <button className="togglebutton" onClick={toggleOnClick}>
           {authedUser.showPollsAnswered
             ? "Toggle to Unanswered Polls"
@@ -19,7 +20,8 @@ class Startpage extends Component {
             <Radiobutton id={id}/>
           </Poll>
         ))}
-      </div>
+      </div>)
+      : <NewPoll />
     );
   }
 }

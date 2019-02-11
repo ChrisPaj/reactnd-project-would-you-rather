@@ -1,7 +1,7 @@
-import { getInitialData, saveQuestionAnswer } from "../utils/api";
-import { getQuestions, answerQuestion } from "./questions";
+import { getInitialData, saveQuestionAnswer, saveQuestion } from "../utils/api";
+import { getQuestions, answerQuestion, addQuestionToQuestions } from "./questions";
 import { getAuthedUser,  } from "./authedUser";
-import { getUsers, answerUser } from "./users";
+import { getUsers, answerUser, addQuestionToUser } from "./users";
 
 export function handleInitialData() {
   return dispatch => {
@@ -22,10 +22,19 @@ export function handleUserAnswer({ id, authedUser, option }){
     }
   }
 
-/* export function handleUserAnswer(info){
-  return (dispatch) => {
-      return saveQuestionAnswer(info)
-        .then(() => dispatch(answerQuestion(info)))
-        .then(() => dispatch(answerUser(info)))
-  };
-} */
+  // dispatch(handleAddQuestion({ optionOneText, optionTwoText, author, poll }))
+export function handleAddQuestion(info){
+	return (dispatch) => {
+		return saveQuestion(info)
+    .then((question) => {
+      dispatch(addQuestionToQuestions(question))
+      return question
+    })
+    .then((question) => {
+      console.log("question: " + JSON.stringify(question)) 
+      const { author, id } = question
+      dispatch(addQuestionToUser(author, id))
+    })
+    .catch((err) => console.log(err))
+	}
+}

@@ -8,7 +8,7 @@ export default function Nav () {
             Home
         </li>
         <li>
-            New Tweet
+            New Poll
         </li>
       </ul>
     </nav>

@@ -166,11 +166,12 @@ export function _getAuthedUser() {
   });
 }
 
-function formatQuestion({ optionOneText, optionTwoText, author }) {
+function formatQuestion({ optionOneText, optionTwoText, author, poll }) {
   return {
     id: generateUID(),
     timestamp: Date.now(),
     author,
+    poll,
     optionOne: {
       votes: [],
       text: optionOneText
@@ -182,9 +183,9 @@ function formatQuestion({ optionOneText, optionTwoText, author }) {
   };
 }
 
-export function _saveQuestion({ optionOneText, optionTwoText, author }) {
+export function _saveQuestion({ optionOneText, optionTwoText, author, poll }) {
   return new Promise((res, rej) => {
-    const formattedQuestion = formatQuestion({ optionOneText, optionTwoText, author });
+    const formattedQuestion = formatQuestion({ optionOneText, optionTwoText, author, poll });
     const authedUser = formattedQuestion.author;
 
     setTimeout(() => {

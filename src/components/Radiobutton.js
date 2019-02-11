@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { answerQuestion } from "../actions/questions";
-import { answerUser } from "../actions/users";
 import { handleUserAnswer } from "../actions/shared";
 
 class Radiobutton extends Component {
@@ -16,38 +14,54 @@ class Radiobutton extends Component {
     this.setState({ option: event.target.value });
   }
 
-  handleAnswer = (e) =>{
-    e.preventDefault()
-    const { id, authedUser, dispatch } = this.props
-    const { option } = this.state
-    dispatch(handleUserAnswer({id, authedUser, option}))
-  }
+  handleAnswer = e => {
+    e.preventDefault();
+    const { id, authedUser, dispatch } = this.props;
+    const { option } = this.state;
+    dispatch(handleUserAnswer({ id, authedUser, option }));
+  };
 
   render() {
-    const { optionOne, optionTwo, authedUser, id } = this.props
-    const { option } = this.state
+    const { optionOne, optionTwo } = this.props;
     return (
       <div>
         <form onChange={this.handleChange}>
-          <input type="radio" name="option" value="optionOne" className="radio"/> {optionOne} <br />
-          <input type="radio" name="option" value="optionTwo" className="radio"/> {optionTwo} <br />
-          <input type="submit" value="SubmitTest" className="btn" onClick={this.handleAnswer}/>
+          <input
+            type="radio"
+            name="option"
+            value="optionOne"
+            className="radio"
+          />
+          {optionOne} <br />
+          <input
+            type="radio"
+            name="option"
+            value="optionTwo"
+            className="radio"
+          />
+          {optionTwo} <br />
+          <input
+            type="submit"
+            value="SubmitTest"
+            className="btn"
+            onClick={this.handleAnswer}
+          />
         </form>
       </div>
     );
   }
 }
 
-function mapStateToProps(state, ownProps){
-  const { questions, authedUser } = state
-  const { id } = ownProps
-  const optionOne = questions[id].optionOne.text
-  const optionTwo = questions[id].optionTwo.text
+function mapStateToProps(state, ownProps) {
+  const { questions, authedUser } = state;
+  const { id } = ownProps;
+  const optionOne = questions[id].optionOne.text;
+  const optionTwo = questions[id].optionTwo.text;
   return {
     optionOne,
     optionTwo,
     authedUser
-  }
+  };
 }
 
 /* function mapDispatchToProps(dispatch){

@@ -59,7 +59,7 @@ li {
 }
 
 .innerpoll {
-  width: 100%;
+  width: 95%;
   max-width: 590px;
   padding: 10px;
   display: flex;
@@ -121,4 +121,11 @@ li {
 
 .radio {
   margin: 0 10px 0 80px;
+}
+.margin {
+  margin: 10px 0;
+}
+
+.center {
+  text-align: center;
 }
