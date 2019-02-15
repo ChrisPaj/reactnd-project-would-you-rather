@@ -1,15 +1,17 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { formatDate } from "../utils/helpers";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 class Poll extends Component {
   render() {
     const { question, avatar, children, id, authedUser } = this.props;
-    const hasPollBeenAnswered = authedUser.showPollsAnswered ? "questionstats" : "answerquestion"
+    const hasPollBeenAnswered = authedUser.showPollsAnswered
+      ? "questionstats"
+      : "answerquestion";
     return (
-      <Link to={`/${hasPollBeenAnswered}/${id}`}>
-        <div className="outerpoll">
+      <div className="outerpoll">
+        <Link to={`/${hasPollBeenAnswered}/${id}`}>
           <div className="innerpoll">
             <img
               src={avatar}
@@ -24,9 +26,9 @@ class Poll extends Component {
               </div>
             </div>
           </div>
-          <div>{children}</div>
-        </div>
-      </Link>
+        </Link>
+        <div>{children}</div>
+      </div>
     );
   }
 }
@@ -40,7 +42,7 @@ function mapStateToProps(state, ownProps) {
   return {
     question,
     avatar,
-    authedUser,
+    authedUser
   };
 }
 export default connect(mapStateToProps)(Poll);

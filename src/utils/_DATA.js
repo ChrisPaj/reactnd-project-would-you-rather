@@ -69,7 +69,7 @@ let questions = {
       votes: ["chrispa"],
       text: "become a superhero"
     },
-    poll: "What you rather become?",
+    poll: "What would you rather become?",
     optionTwo: {
       votes: ["johndoe", "sarahedo"],
       text: "become a supervillian"
@@ -79,7 +79,7 @@ let questions = {
     id: "am8ehyc8byjqgar0jgpub9",
     author: "sarahedo",
     timestamp: 1488579767190,
-    poll: "What you rather be?",
+    poll: "What would you rather be?",
     optionOne: {
       votes: [],
       text: "be telekinetic"
@@ -93,7 +93,7 @@ let questions = {
     id: "loxhs1bqm25b708cmbf3g",
     author: "tylermcginnis",
     timestamp: 1482579767190,
-    poll: "What job wouldyou rather do?",
+    poll: "What job would you rather do?",
     optionOne: {
       votes: ["chrispa"],
       text: "be a front-end developer"
