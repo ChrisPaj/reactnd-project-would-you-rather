@@ -5,7 +5,7 @@ import { handleUserAnswer } from "../actions/shared";
 class Radiobutton extends Component {
   constructor(props) {
     super(props);
-    this.state = { option: "" };
+    this.state = { option: "optionOne" };
 
     this.handleChange = this.handleChange.bind(this);
   }
@@ -31,6 +31,7 @@ class Radiobutton extends Component {
             name="option"
             value="optionOne"
             className="radio"
+            defaultChecked
           />
           {optionOne} <br />
           <input

@@ -8,8 +8,7 @@ import { toggleShowPollsAnswered } from "../actions/authedUser";
 class Startpage extends Component {
   render() {
     const { authedUser, questionIds, toggleOnClick } = this.props;
-    return ( authedUser === "hello" ?
-      (<div>
+    return ( <div>
         <button className="togglebutton" onClick={toggleOnClick}>
           {authedUser.showPollsAnswered
             ? "Toggle to Unanswered Polls"
@@ -20,8 +19,7 @@ class Startpage extends Component {
             <Radiobutton id={id}/>
           </Poll>
         ))}
-      </div>)
-      : <NewPoll />
+      </div> 
     );
   }
 }

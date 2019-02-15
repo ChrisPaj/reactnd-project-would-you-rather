@@ -1,8 +1,11 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import { handleInitialData } from "../actions/shared";
 import { connect } from "react-redux";
 import Startpage from "./Startpage";
 import Selectbox from "./Selectbox";
+import NewPoll from "./NewPoll";
+import Poll from "./Poll";
 import Nav from "./Nav";
 import styled from "styled-components";
 
@@ -22,13 +25,18 @@ class App extends Component {
   }
   render() {
     return (
+      <Router>
       <div className="app">
         <StyledHeader>
           <Nav />
           <Selectbox />
         </StyledHeader>
-        {this.props.authedUser.id ? <Startpage /> : null}
+        {this.props.authedUser.id ? 
+        <Route path="/" exact component={Startpage}></Route> : null}
+        <Route path="/new" exact component={NewPoll}></Route>
+        <Route path="/poll/:id" component={Poll}></Route>
       </div>
+      </Router>
     );
   }
 }
