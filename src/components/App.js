@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import Startpage from "./Startpage";
 import Selectbox from "./Selectbox";
 import PollAnswer from "./PollAnswer";
+import PollStats from "./PollStats";
 import NewPoll from "./NewPoll";
 import Nav from "./Nav";
 import styled from "styled-components";
@@ -35,6 +36,7 @@ class App extends Component {
         <Route path="/" exact component={Startpage}></Route> : null}
         <Route path="/new" exact component={NewPoll}></Route>
         <Route path="/answerquestion/:id" component={PollAnswer}></Route>
+        <Route path="/questionstats/:id" component={PollStats}></Route>
       </div>
       </Router>
     );

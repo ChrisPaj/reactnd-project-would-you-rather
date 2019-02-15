@@ -36,6 +36,8 @@ class NewPoll extends Component {
   render() {
     return (
       <div className="outerpoll">
+        {this.props.authedUser.id !== "" 
+        ?
         <form onChange={this.handleChange}>
           <h3 className="center">Would you rather...</h3>
           <input
@@ -66,6 +68,7 @@ class NewPoll extends Component {
             onClick={this.handleAddAnswer}
           />
         </form>
+        : null }
       </div>
     );
   }

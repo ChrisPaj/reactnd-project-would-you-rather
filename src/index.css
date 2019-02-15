@@ -125,7 +125,13 @@ li {
 .margin {
   margin: 10px 0;
 }
+.margin-big {
+  margin: 0 0 0 90px;
+}
 
 .center {
   text-align: center;
+}
+.stats-highlight {
+  color: green
 }
