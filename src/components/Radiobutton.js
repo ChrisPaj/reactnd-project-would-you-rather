@@ -1,11 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 import { handleUserAnswer } from "../actions/shared";
 
 class Radiobutton extends Component {
   constructor(props) {
     super(props);
-    this.state = { option: "optionOne" };
+    this.state = {
+      option: "optionOne",
+      redirect: false
+    };
 
     this.handleChange = this.handleChange.bind(this);
   }
@@ -19,10 +23,17 @@ class Radiobutton extends Component {
     const { id, authedUser, dispatch } = this.props;
     const { option } = this.state;
     dispatch(handleUserAnswer({ id, authedUser, option }));
+    this.setState({ redirect: true });
   };
 
   render() {
-    const { optionOne, optionTwo } = this.props;
+    const { optionOne, optionTwo, id } = this.props;
+    const { redirect } = this.state;
+
+    if (redirect === true) {
+      return <Redirect to={`/questionstats/${id}`}/>
+    }
+
     return (
       <div>
         <form onChange={this.handleChange}>
@@ -43,7 +54,7 @@ class Radiobutton extends Component {
           {optionTwo} <br />
           <input
             type="submit"
-            value="SubmitTest"
+            value="Submit"
             className="btn"
             onClick={this.handleAnswer}
           />

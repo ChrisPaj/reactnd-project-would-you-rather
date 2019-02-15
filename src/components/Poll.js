@@ -5,9 +5,10 @@ import { Link } from 'react-router-dom'
 
 class Poll extends Component {
   render() {
-    const { question, avatar, children, id } = this.props;
+    const { question, avatar, children, id, authedUser } = this.props;
+    const hasPollBeenAnswered = authedUser.showPollsAnswered ? "questionstats" : "answerquestion"
     return (
-      <Link to={`/questionstats/${id}`}>
+      <Link to={`/${hasPollBeenAnswered}/${id}`}>
         <div className="outerpoll">
           <div className="innerpoll">
             <img
@@ -18,7 +19,6 @@ class Poll extends Component {
             <div className="poll-info">
               <div>
                 <span>{question.author}</span>
-                <span>{id}</span>
                 <div>{formatDate(question.timestamp)}</div>
                 <p className="textpoll">{question.poll}</p>
               </div>
@@ -32,14 +32,15 @@ class Poll extends Component {
 }
 
 function mapStateToProps(state, ownProps) {
-  const { questions, users } = state;
+  const { questions, users, authedUser } = state;
   const { id } = ownProps;
   const question = questions[id];
   const asker = question.author;
   const avatar = users[asker].avatarURL;
   return {
     question,
-    avatar
+    avatar,
+    authedUser,
   };
 }
 export default connect(mapStateToProps)(Poll);
