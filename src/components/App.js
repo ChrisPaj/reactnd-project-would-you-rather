@@ -4,8 +4,8 @@ import { handleInitialData } from "../actions/shared";
 import { connect } from "react-redux";
 import Startpage from "./Startpage";
 import Selectbox from "./Selectbox";
+import PollAnswer from "./PollAnswer";
 import NewPoll from "./NewPoll";
-import Poll from "./Poll";
 import Nav from "./Nav";
 import styled from "styled-components";
 
@@ -34,7 +34,7 @@ class App extends Component {
         {this.props.authedUser.id ? 
         <Route path="/" exact component={Startpage}></Route> : null}
         <Route path="/new" exact component={NewPoll}></Route>
-        <Route path="/poll/:id" component={Poll}></Route>
+        <Route path="/answerquestion/:id" component={PollAnswer}></Route>
       </div>
       </Router>
     );

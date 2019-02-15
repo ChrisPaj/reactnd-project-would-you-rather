@@ -7,7 +7,7 @@ class Poll extends Component {
   render() {
     const { question, avatar, children, id } = this.props;
     return (
-      <Link to={`/poll/${id}`}>
+      <Link to={`/answerquestion/${id}`}>
         <div className="outerpoll">
           <div className="innerpoll">
             <img

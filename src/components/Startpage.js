@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Poll from "./Poll";
-import Radiobutton from "./Radiobutton";
-import NewPoll from "./NewPoll";
 import { toggleShowPollsAnswered } from "../actions/authedUser";
 
 class Startpage extends Component {
@@ -15,9 +13,7 @@ class Startpage extends Component {
             : "Toggle to Answered Polls"}
         </button>
         {questionIds.map(id => (
-          <Poll key={id} id={id}>
-            <Radiobutton id={id}/>
-          </Poll>
+          <Poll key={id} id={id}/>
         ))}
       </div> 
     );
