@@ -9,7 +9,8 @@ let users = {
       am8ehyc8byjqgar0jgpub9: "optionTwo",
       loxhs1bqm25b708cmbf3g: "optionTwo"
     },
-    questions: ["8xf0y6ziyjabvozdd253nd", "am8ehyc8byjqgar0jgpub9"]
+    questions: ["8xf0y6ziyjabvozdd253nd", "am8ehyc8byjqgar0jgpub9"], 
+    score: 6,
   },
   tylermcginnis: {
     id: "tylermcginnis",
@@ -19,7 +20,8 @@ let users = {
       vthrdm985a262al8qx3do: "optionOne",
       xj352vofupe1dqz9emx13r: "optionTwo"
     },
-    questions: ["loxhs1bqm25b708cmbf3g", "vthrdm985a262al8qx3do"]
+    questions: ["loxhs1bqm25b708cmbf3g", "vthrdm985a262al8qx3do"],
+    score: 4,
   },
   johndoe: {
     id: "johndoe",
@@ -30,7 +32,8 @@ let users = {
       vthrdm985a262al8qx3do: "optionTwo",
       "6ni6ok3ym7mf1p33lnez": "optionOne"
     },
-    questions: ["6ni6ok3ym7mf1p33lnez", "xj352vofupe1dqz9emx13r"]
+    questions: ["6ni6ok3ym7mf1p33lnez", "xj352vofupe1dqz9emx13r"],
+    score: 5,
   },
   chrispa: {
     id: "chrispa",
@@ -42,7 +45,8 @@ let users = {
       am8ehyc8byjqgar0jgpub9: "optionTwo",
       loxhs1bqm25b708cmbf3g: "optionOne"
     },
-    questions: []
+    questions: [],
+    score: 4,
   },
 };
 
@@ -183,7 +187,7 @@ function formatQuestion({ optionOneText, optionTwoText, author, poll }) {
   };
 }
 
-export function _saveQuestion({ optionOneText, optionTwoText, author, poll }) {
+export function _saveQuestion({ optionOneText, optionTwoText, author, poll, score }) {
   return new Promise((res, rej) => {
     const formattedQuestion = formatQuestion({ optionOneText, optionTwoText, author, poll });
     const authedUser = formattedQuestion.author;
@@ -198,9 +202,11 @@ export function _saveQuestion({ optionOneText, optionTwoText, author, poll }) {
         ...users,
         [authedUser]: {
           ...users[authedUser],
-          questions: users[authedUser].questions.concat([formattedQuestion.id])
+          questions: users[authedUser].questions.concat([formattedQuestion.id]),
+          score: (users[authedUser].score + 1),
         }
       };
+      console.log("_saveQuestion: users: " + JSON.stringify(users))
 
       res(formattedQuestion);
     }, 1000);
@@ -217,9 +223,11 @@ export function _saveQuestionAnswer({ id, authedUser, option }) {
           answers: {
             ...users[authedUser.id].answers,
             [id]: option
-          }
+          },
+          score: (users[authedUser.id].score + 1)
         }
       };
+      console.log("_saveQuestionAnswer: users: "  + JSON.stringify(users))
 
       questions = {
         ...questions,

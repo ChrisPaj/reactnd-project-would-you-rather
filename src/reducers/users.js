@@ -14,7 +14,8 @@ export default function users(state = {}, action) {
             ...state[action.authedUser.id],
               answers: {
                 ...state[action.authedUser.id]["answers"],
-                [action.id]: action.option,}
+                [action.id]: action.option,},
+              score: (state[action.authedUser.id].score + 1)
           }
       };
       case ADD_NEW_ANSWER_TO_USER:
@@ -22,7 +23,8 @@ export default function users(state = {}, action) {
         ...state,
         [action.id]: {
             ...state[action.id],
-            questions: state[action.id].questions.concat([action.question])
+            questions: state[action.id].questions.concat([action.question]),
+            score: (state[action.id].score + 1)
           }
       };
     default:

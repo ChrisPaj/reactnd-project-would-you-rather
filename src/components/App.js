@@ -7,6 +7,7 @@ import Selectbox from "./Selectbox";
 import PollAnswer from "./PollAnswer";
 import PollStats from "./PollStats";
 import NewPoll from "./NewPoll";
+import LeaderBoard from "./LeaderBoard";
 import Nav from "./Nav";
 import styled from "styled-components";
 
@@ -37,6 +38,7 @@ class App extends Component {
         <Route path="/new" exact component={NewPoll}></Route>
         <Route path="/answerquestion/:id" component={PollAnswer}></Route>
         <Route path="/questionstats/:id" component={PollStats}></Route>
+        <Route path="/leaderboard" component={LeaderBoard}></Route>
       </div>
       </Router>
     );

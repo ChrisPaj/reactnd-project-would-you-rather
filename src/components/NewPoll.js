@@ -22,7 +22,7 @@ class NewPoll extends Component {
     this.setState({ optionTwoText: event.target.value });
   }
   handleAddAnswer(event) {
-    const { dispatch, authedUser } = this.props;
+    const { dispatch, authedUser, users } = this.props;
     const { optionOneText, optionTwoText, preText } = this.state;
     const poll = preText + " " + optionOneText + " or " + optionTwoText + "?" 
     const author = authedUser.id;
@@ -74,10 +74,10 @@ class NewPoll extends Component {
   }
 }
 
-function mapStateToProps(state, ownProps) {
-  const authedUser = state.authedUser;
+function mapStateToProps(state) {
+  const { authedUser } = state;
   return {
-    authedUser
+    authedUser,
   };
 }
 
