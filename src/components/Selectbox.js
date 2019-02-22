@@ -18,6 +18,7 @@ class Selectbox extends Component {
   logout(event){
     event.preventDefault();
     this.props.dispatch(changeAuthedUser({ id: "" }));
+    this.setState({ id: "" });
   }
   login(event){
     event.preventDefault();
@@ -32,7 +33,7 @@ class Selectbox extends Component {
             value={this.state.id}
             onChange={this.handleChange}
           >
-            <option hidden disabeled="true" value="default">
+            <option hidden disabeled="true" value="">
               ---choose out of list and press Submit---
             </option>
             <option value="sarahedo">Sarah Edo</option>
@@ -49,7 +50,7 @@ class Selectbox extends Component {
             />
             <input
               type="button"
-              value="Submit"
+              value="Logout"
               onClick={this.logout}
             />
           </Fragment>

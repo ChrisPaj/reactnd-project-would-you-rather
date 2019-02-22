@@ -22,7 +22,7 @@ class NewPoll extends Component {
     this.setState({ optionTwoText: event.target.value });
   }
   handleAddAnswer(event) {
-    const { dispatch, authedUser, users } = this.props;
+    const { dispatch, authedUser } = this.props;
     const { optionOneText, optionTwoText, preText } = this.state;
     const poll = preText + " " + optionOneText + " or " + optionTwoText + "?" 
     const author = authedUser.id;
