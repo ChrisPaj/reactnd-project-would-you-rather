@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { changeAuthedUser } from "../actions/authedUser";
 
@@ -8,17 +8,25 @@ class Selectbox extends Component {
     this.state = { id: "" };
 
     this.handleChange = this.handleChange.bind(this);
+    this.login = this.login.bind(this);
+    this.logout = this.logout.bind(this);
   }
 
   handleChange(event) {
     this.setState({ id: event.target.value });
   }
+  logout(event){
+    event.preventDefault();
+    this.props.dispatch(changeAuthedUser({ id: "" }));
+  }
+  login(event){
+    event.preventDefault();
+    this.props.dispatch(changeAuthedUser({ id: this.state.id }));
+  }
 
   render() {
     return (
-      <form onSubmit={(e) => e.preventDefault()}>
-        <label>
-          Your Username:
+      <form onSubmit={e => e.preventDefault()}>
           <select
             className="select"
             value={this.state.id}
@@ -32,31 +40,23 @@ class Selectbox extends Component {
             <option value="johndoe">John Doe</option>
             <option value="chrispa">Chris Pa</option>
           </select>
-        </label>
         {this.state.id === "" ? null : (
-          <input
-            type="submit"
-            value="Submit"
-            onClick={() => {
-							this.props.toggleOnClick(this.state.id)
-							}}
-          />
+          <Fragment>
+            <input
+              type="button"
+              value="Submit"
+              onClick={this.login}
+            />
+            <input
+              type="button"
+              value="Submit"
+              onClick={this.logout}
+            />
+          </Fragment>
         )}
       </form>
     );
   }
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-  return {
-    toggleOnClick: username => {
-      console.log("button pressed. username: " + username);
-      dispatch(changeAuthedUser({ id: username }));
-    }
-  };
-};
-
-export default connect(
-  null,
-  mapDispatchToProps
-)(Selectbox);
+export default connect()(Selectbox);

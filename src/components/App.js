@@ -31,7 +31,9 @@ class App extends Component {
       <div className="app">
         <StyledHeader>
           <Nav />
+          <div>lalal</div>
           <Selectbox />
+          <div>lalal</div>
         </StyledHeader>
         {this.props.authedUser.id ? 
         <Route path="/" exact component={Startpage}></Route> : null}

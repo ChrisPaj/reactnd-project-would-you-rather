@@ -38,7 +38,7 @@ let users = {
   chrispa: {
     id: "chrispa",
     name: "Chris Pa",
-    avatarURL: "https://tylermcginnis.com/would-you-rather/sarah.jpg",
+    avatarURL: "https://chrispaj.github.io/images/chrispa.jpg",
     answers: {
       "8xf0y6ziyjabvozdd253nd": "optionTwo",
       "6ni6ok3ym7mf1p33lnez": "optionOne",
