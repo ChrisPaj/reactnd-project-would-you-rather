@@ -2,7 +2,7 @@
 
 This is a classical 'Would you rather' game.
 To start off you first have to register.
-To do so, you simply pick your name from the seelect boxes options and confirm with Submit.
+To do so, you simply pick your name from the select boxes options and confirm with Submit.
 Being logged in you may logout by pressing the logout button.
 
 While logged in you can see a list of unanswered polls.
@@ -14,10 +14,10 @@ On the startpage you may toggle to your already answered questions.
 Click on one of them to get the stats.
 
 You have an interestion question to aks?
-Just go to the New Poll site by clicking the correponding Link in the Nav and add your question to create a new poll.
+Just go to the New Poll site by clicking the correponding link in the navigation and add your question to create a new poll.
 
-Answering questions and creating new polls will both earn you 1 point.
-Feel free to go to the leader board via nav to see a ranking of all users.
+Answering questions and creating new polls will each earn you 1 point.
+Feel free to go to the leader board via navigation to see a ranking of all users.
 
 ## Installation
 
