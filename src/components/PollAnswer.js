@@ -5,6 +5,13 @@ import { connect } from "react-redux";
 
 class PollAnswer extends Component {
   render() {
+    if (this.props.idValid === false) {
+      return (
+        <div className="outerpoll">
+          <div className="innerpoll, textpoll, center">404</div>
+        </div>
+      );
+    }
     return (
       <div>
         <Poll id={this.props.id}>
@@ -17,9 +24,14 @@ class PollAnswer extends Component {
 
 function mapStateToProps(state, props) {
   const { id } = props.match.params;
+  const { questions } = state;
+  const allQuestionIds = Object.keys(questions);
+  const isParamIdInAllQuestions = allQuestionIds.includes(id);
+  // console.log(isParamIdInAllQuestions)
 
   return {
-    id
+    id,
+    idValid: isParamIdInAllQuestions
   };
 }
 export default connect(mapStateToProps)(PollAnswer);
