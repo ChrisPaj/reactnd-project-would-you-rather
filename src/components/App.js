@@ -28,18 +28,21 @@ class App extends Component {
   render() {
     return (
       <Router>
-      <div className="app">
-        <StyledHeader>
-          <Nav />
-          <Selectbox />
-        </StyledHeader>
-        {this.props.authedUser.id ? 
-        <Route path="/" exact component={Startpage}></Route> : null}
-        <Route path="/new" exact component={NewPoll}></Route>
-        <Route path="/answerquestion/:id" component={PollAnswer}></Route>
-        <Route path="/questionstats/:id" component={PollStats}></Route>
-        <Route path="/leaderboard" component={LeaderBoard}></Route>
-      </div>
+        <div className="app">
+          <StyledHeader>
+            <Nav />
+            <Selectbox />
+          </StyledHeader>
+          {this.props.authedUser.id ?
+            <div>
+              <Route path="/" exact component={Startpage}></Route>
+              <Route path="/new" exact component={NewPoll}></Route>
+              <Route path="/answerquestion/:id" component={PollAnswer}></Route>
+              <Route path="/questionstats/:id" component={PollStats}></Route>
+              <Route path="/leaderboard" component={LeaderBoard}></Route>
+            </div>
+            : null}
+        </div>
       </Router>
     );
   }
